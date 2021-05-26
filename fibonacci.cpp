@@ -1,17 +1,19 @@
-#include <iostream>  
-using namespace std; 
-
-int main(){  
-  int num1=0,num2=1,num3,i,n;    
-  cout<<"\nEnter the number of elements of Fibonacci Series : ";    
-  cin>>n;    
-  cout<<num1<<' '<<num2<<' '; //First print 0 and 1 
-
-  for(i=2;i<n;++i){    
-    num3=num1+num2;    
-    cout<<num3<<' ';    
-    num1=num2;    
-    num2=num3;    
-  }    
-  return 0;  
-}  
+#include <iostream>
+using namespace std;
+int fib(int N){
+    int a=0,b=1;
+    int sum=0;
+    cout<<a<<"\t"<<b<<"\t";
+    for(int i=0;i<N;i++){
+        sum=a+b;
+        cout<<sum<<"\t";
+        a=b;
+        b=sum;
+    }
+}
+int main(){
+    int n;
+    cin>>n;
+    fib(n-2);
+    return 0;
+}
