@@ -1,43 +1,32 @@
-
 #include <iostream>
 using namespace std;
-
-template<class T>
-int bSearch(T arr[],int l, int r,T ele)
-{
-    int mid = (l+r)/2;
-    if(l<r)
-    {
-        if(arr[mid] > ele)
-            bSearch(arr,l,mid-1,ele);
-        else if(arr[mid] < ele)
-            bSearch(arr,mid+1,r,ele);
-        else
-            return mid;
+int bin_search(int a[],int n,int num){
+    int first=0,last=n-1;
+    int flag=0;
+    while(first<=last){
+        int mid=(first+last)/2;
+        if(a[mid]<num)
+            first=mid+1;
+        else if(a[mid]>num)
+            last=mid-1;
+        else{
+            flag=1;
+            return flag;
+        }
     }
-    
+    return flag;
 }
-
-int main()
-{
-    int pos,n,key,i;
-    cout<<"Enter the size of the array : ";
+int main(){
+    int n;
     cin>>n;
-    int arr[n];
-    cout<<"Enter the "<<n<<" elements : ";
-    for(i=0;i<n;i++)
-    {
-        cin>>arr[i];
-    }
-    cout<<"Enter the element to be found : ";
-    cin>>key;
-    pos = bSearch(arr,0,n-1,key);
-    if(pos != -1)
-        cout<<"Element is present at "<<pos<<" position";
-    else
-        cout<<"Element is not present";
-
+    int a[n];
+    for(int i=0;i<n;i++)
+        cin>>a[i];
+    int num;
+    cin>>num;
+    int flag=bin_search(a,n,num);
+    if(flag==1)
+        cout<<"Found";
+    else cout<<"Not Found";
     return 0;
 }
-
-

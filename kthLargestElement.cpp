@@ -1,32 +1,32 @@
-#include <iostream>
-
+#include<bits/stdc++.h>
 using namespace std;
-
-int main()
-{
-    int a[50] , n , temp, k , i , j;
-    cout<<"Enter the size of the array : ";
-    cin>>n;
-    cout<<"Enter the value of k : ";
-    cin>>k;
-    for(i=0;i<n;i++)
-    {
-        cout<<"Enter the "<<i+1<<" element : ";
-        cin>>a[i];
+int get_max(int a[], int n) {
+    int maxm=INT_MIN;
+    for (int i = 0; i < n; i++) {
+        maxm = max(maxm, a[i]);
     }
-    
-    for(i=0;i<n;i++)
-    {
-        for(j=0;j<n-1;j++)
-        {
-            if(a[j] > a[j+1])
-            {
-                temp = a[j];
-                a[j] = a[j+1];
-                a[j+1] = temp;
-            }
-        }
+    for(int i=0;i<n;i++){
+        if(maxm==a[i])
+        return i;
     }
-    cout<<k<<" th largest number is "<<a[n-k];
-    return 0;
+}
+int main() {
+    int n;
+    cin >> n;
+    int a[n];
+    for (int i = 0; i < n; i++)
+        cin >> a[i];
+    int k;
+    cout << "which largest element:";
+    cin >> k;
+    for (int i = 1; i <= k - 1; i++) {
+        int t = get_max(a, n);
+        a[t]=INT_MIN;
+    }
+    int maxm = INT_MIN;
+    for (int i = 0; i < n; i++) {
+        maxm = max(maxm, a[i]);
+    }
+    cout << endl;
+    cout << maxm;
 }
